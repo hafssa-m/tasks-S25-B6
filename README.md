@@ -1,2 +1,2 @@
-# tasks-S25-B6
+# tasks
 my tasks
