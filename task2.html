@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart User Checker App</title>
+</head>
+<body>
+  <h1>Smart User Checker App</h1>
+  <p id="output"></p>
+
+  <script>
+    var name = prompt("What is your name?");
+    var birthYear = parseInt(prompt("What is your birth year?"));
+    var isStudent = confirm("Are you a student?");
+
+
+    var currentYear = new Date().getFullYear();
+    var age = currentYear - birthYear;
+
+    let category = "";
+    if (age < 13) {
+      category = "Kid";
+    } else if (age >= 13 && age <= 17) {
+      category = "Teen";
+    } else if (age >= 18 && age <= 59) {
+      category = "Adult";
+    } else {
+      category = "Senior";
+    }
+
+    let message = `Hello ${name}, you are ${age} years old.\nCategory: ${category}.`;
+    if (isStudent) {
+      message += `\nDon't forget to study hard!`;
+    }
+
+    // 1. Console log
+    console.log(message);
+
+    // 2. Alert box
+    alert(message);
+
+    // 3. HTML DOM
+    document.getElementById("output").innerText = message;
+  </script>
+</body>
+</html>
