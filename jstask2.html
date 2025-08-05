@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Evaluation App</title>
+</head>
+<body>
+  <h1>Employee Evaluation Report</h1>
+  <pre id="output"></pre>
+
+  <script>
+    var name = prompt("Enter employee's name:");
+    var age = parseInt(prompt("Enter employee's age:"));
+    var experience = parseFloat(prompt("Enter years of experience:"));
+    var rating = parseInt(prompt("Rate yourself from 1 to 10:"));
+    var baseSalary = 10000;
+
+    let jobCategory = "";
+    if (experience < 2) {
+      jobCategory = "Junior";
+    } else if (experience >= 2 && experience <= 5) {
+      jobCategory = "Mid-Level";
+    } else if (experience > 5 && experience <= 10) {
+      jobCategory = "Senior";
+    } else {
+      jobCategory = "Expert";
+    }
+
+    let performance = "";
+    switch (true) {
+      case (rating >= 9):
+        performance = "Excellent";
+        break;
+      case (rating >= 7):
+        performance = "Good";
+        break;
+      case (rating >= 5):
+        performance = "Average";
+        break;
+      default:
+        performance = "Needs Improvement";
+    }
+    let bonusPercentage = 0;
+    if (experience <= 2) {
+      bonusPercentage = 0.10;
+    } else if (experience <= 5) {
+      bonusPercentage = 0.15;
+    } else {
+      bonusPercentage = 0.20;
+    }
+    var bonus = baseSalary * bonusPercentage;
+    var finalSalary = baseSalary + bonus;
+
+    var currentHour = new Date().getHours();
+    let shift = "";
+
+    if (currentHour >= 9 && currentHour < 18) {
+      shift = "Day Shift";
+    } else {
+      shift = "Night Shift";
+    }
+
+    const report = `
+Employee Name: ${name}
+Age: ${age}
+Experience: ${experience} years
+Job Category: ${jobCategory}
+Performance Level: ${performance}
+Base Salary: $${baseSalary}
+Bonus: $${bonus}
+Final Salary: $${finalSalary}
+Current Shift: ${shift}
+    `;
+
+
+    console.log(report);
+
+    alert(report);
+
+    document.getElementById("output").innerText = report;
+  </script>
+</body>
+</html>
